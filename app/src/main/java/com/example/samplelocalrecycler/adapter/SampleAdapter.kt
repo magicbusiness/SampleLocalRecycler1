@@ -42,7 +42,9 @@ class SampleAdapter(private val dataSheets: ArrayList<Sheets>): RecyclerView.Ada
         holder.titleSample.text = data.title
         holder.descSample.text = data.desc
 
-        
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context, "You Choose ${data.title}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int
