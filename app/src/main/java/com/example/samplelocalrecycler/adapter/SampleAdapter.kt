@@ -1,5 +1,6 @@
 package com.example.samplelocalrecycler.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.samplelocalrecycler.DetailActivity
 import com.example.samplelocalrecycler.R
 import com.example.samplelocalrecycler.modal.Sheets
 import de.hdodenhof.circleimageview.CircleImageView
@@ -43,7 +45,12 @@ class SampleAdapter(private val dataSheets: ArrayList<Sheets>): RecyclerView.Ada
         holder.descSample.text = data.desc
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "You Choose ${data.title}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(holder.itemView.context, "You Choose ${data.title}", Toast.LENGTH_SHORT).show()
+            val pass = holder.itemView.context
+
+            val intentDetail = Intent(pass, DetailActivity::class.java)
+            intentDetail.putExtra("recycler_main", data)
+            pass.startActivity(intentDetail)
         }
     }
 
